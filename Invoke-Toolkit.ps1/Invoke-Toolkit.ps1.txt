@@ -1,0 +1,25 @@
+Clear-Host
+
+Import-Module ".\Modules\Core\Write-Log.psm1"
+Import-Module ".\Modules\Core\Test-Administrator.psm1"
+Import-Module ".\Modules\Core\Get-SystemInfo.psm1"
+
+Write-Host ""
+Write-Host "======================================" -ForegroundColor Cyan
+Write-Host " Enterprise Windows Toolkit v1.0 " -ForegroundColor Cyan
+Write-Host "======================================" -ForegroundColor Cyan
+Write-Host ""
+
+if (-not (Test-Administrator))
+{
+    Write-Log "Run PowerShell as Administrator." ERROR
+    return
+}
+
+Write-Log "Toolkit Started" SUCCESS
+
+Write-Host ""
+
+Get-SystemInfo | Format-List
+
+Write-Host ""
